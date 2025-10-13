@@ -468,9 +468,13 @@ if _G.farm and game.PlaceId == 7449423635 then
                     repeat
                         task.wait(0.5)
                     until ripindraSpawn()
-                    _G.fastattack = true
-                    attackRipIndra()
-                    _G.fastattack = false
+                elseif ripindraSpawn() then
+                    repeat
+                        equipTool("Melee")
+                        _G.fastattack = true
+                        attackRipIndra()
+                        _G.fastattack = false
+                    until not workspace.Enemies:FindFirstChild("rip_indra True Form") and workspace.Enemies:FindFirstChild("rip_indra True Form").Humanoid.Health <= 0
                 end
             end
         end)
