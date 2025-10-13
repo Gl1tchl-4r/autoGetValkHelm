@@ -469,8 +469,7 @@ if _G.farm and game.PlaceId == 7449423635 then
                         task.wait(0.5)
                     until ripindraSpawn()
                 elseif ripindraSpawn() then
-                    repeat
-                        equipTool("Melee")
+                    repeat task.wait()
                         _G.fastattack = true
                         attackRipIndra()
                         _G.fastattack = false
