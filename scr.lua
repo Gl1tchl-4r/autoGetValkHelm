@@ -434,7 +434,7 @@ if _G.main and game.PlaceId == 7449423635 then
             if hrp.CFrame.Position ~= castleIsland and not reachedCastle then
                 repeat task.wait()
                     tweenTo(castleIsland)
-                until hrp.CFrame.Position == castleIsland
+                until (hrp.Position - castleIsland).Magnitude <= 5
                 print("reachedCastle")
                 reachedCastle = true
             else
