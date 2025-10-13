@@ -1,16 +1,3 @@
-_G.Configs = {
-    ["Main"] = {
-        "aaa"
-    },
-    ["Farm"] = {
-        "DPI65O",
-        "user002",
-        "user003"
-    }
-}
-
-repeat wait() until game:IsLoaded() and game.Players.LocalPlayer
-
 task.spawn(function ()
     local args = {
         "SetTeam",
