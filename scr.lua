@@ -29,6 +29,7 @@ _G.autoChest = false
 _G.main = false
 _G.farm = false
 _G.fastattack = false
+_G.autoGetElite = true
 
 if table.find(_G.Configs["Main"], player.Name) then
     _G.main = true
@@ -70,7 +71,7 @@ local function teleportTo(targetCFrame)
 end
 
 function tweenTo(POs, speed, useTpForClose)
-    speed = speed or 200
+    speed = speed or 250
     useTpForClose = useTpForClose or true
     
     hrp.Anchored = false
