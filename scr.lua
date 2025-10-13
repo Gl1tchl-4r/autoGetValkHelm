@@ -36,6 +36,12 @@ elseif table.find(_G.Configs["Farm"], player.Name) then
     _G.farm = true
 end
 
+spawn(function ()
+    for i,v in pairs(getconnections(game.Players.LocalPlayer.Idled)) do
+        v:Disable()
+    end
+end)
+
 spawn(function()
     while task.wait(60) do
         uptimeSeconds = workspace.DistributedGameTime
