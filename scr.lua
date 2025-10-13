@@ -166,7 +166,7 @@ local function fastAttack()
             local data = CombatUtil:GetWeaponData(weapon.Name)
             if not data then return end
             
-            data.HitboxMagnitude = 60
+            data.HitboxMagnitude = 45
             data.SwingSound = ""
             data.HitSound = ""
             
@@ -183,7 +183,7 @@ local function fastAttack()
                                 local mt = getrawmetatable(cached._Object)
                                 setreadonly(mt, false)
                                 local oldIndex = mt.__index
-                                mt.__index = function(t, k) return k == "Length" and 0.1 or oldIndex(t, k) end
+                                mt.__index = function(t, k) return k == "Length" and 0.13 or oldIndex(t, k) end
                                 setreadonly(mt, true)
                             end)
                         end
@@ -221,7 +221,7 @@ local function fastAttack()
         end
         
         -- Attack with delay
-        if now - lastAttackTime < 0.12 then return end
+        if now - lastAttackTime < 0.13 then return end
         
         pcall(function()
             local character = LocalPlayer.Character
