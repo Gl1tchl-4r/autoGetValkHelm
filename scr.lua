@@ -11,7 +11,7 @@ task.spawn(function ()
     end
 end)
 
-repeat wait() until game:IsLoaded() and game.Players.LocalPlayer.Character and game:GetService("Players").LocalPlayer.PlayerGui.LoadingScreen.LoadingData.Visible == false
+repeat wait() until game:IsLoaded() and game.Players.LocalPlayer.Character
 
 local TweenService = game:GetService("TweenService")
 local player = game.Players.LocalPlayer
