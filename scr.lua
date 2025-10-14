@@ -11,7 +11,7 @@ task.spawn(function ()
     end
 end)
 
-repeat wait() until game:IsLoaded() and game.Players.LocalPlayer.Character
+repeat wait() until game:IsLoaded() and game.Players.LocalPlayer.Character and game:GetService("Players").LocalPlayer.PlayerGui.LoadingScreen.LoadingData.Visible == false
 
 local TweenService = game:GetService("TweenService")
 local player = game.Players.LocalPlayer
@@ -429,7 +429,7 @@ if _G.main and game.PlaceId == 7449423635 then
             until hasGodChalice()
             _G.autoChest = false
         end
-        if hasGodChalice() then
+        if hasGodChalice() or ripindraSpawn() then
             _G.autoElite = false
             if hrp.CFrame.Position ~= castleIsland and not reachedCastle then
                 repeat task.wait()
@@ -438,7 +438,7 @@ if _G.main and game.PlaceId == 7449423635 then
                 print("reachedCastle")
                 reachedCastle = true
             else
-                if hrp.CFrame.Position == castleIsland and reachedCastle then
+                if reachedCastle then
                     print("here tapHaki")
                     tapHaki()
                     repeat  task.wait(0.1)
