@@ -23,7 +23,7 @@ local eliteHunter1 = workspace:WaitForChild("Enemies")
 local activeElite = nil
 local castleIsland = Vector3.new(-5398.70263671875, 1088.790283203125, -2602.19921875)
 local uptimeSeconds = workspace.DistributedGameTime
-local uptimeMinutes = math.floor(uptimeSeconds / 60)  -- นาทีส่วนที่เหลือ
+local uptimeMinutes = math.floor(uptimeSeconds / 60)
 _G.autoElite = true
 _G.autoChest = false
 _G.main = false
@@ -46,7 +46,7 @@ end)
 spawn(function()
     while task.wait(60) do
         uptimeSeconds = workspace.DistributedGameTime
-        uptimeMinutes = math.floor((uptimeSeconds % 3600) / 60)  -- นาทีส่วนที่เหลือ
+        uptimeMinutes = math.floor(uptimeSeconds / 60)
         print(uptimeMinutes .. " min")
         if uptimeMinutes == 242 then
             _G.autoElite = false
