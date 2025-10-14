@@ -71,7 +71,7 @@ local function teleportTo(targetCFrame)
 end
 
 function tweenTo(POs, speed, useTpForClose)
-    speed = speed or 200
+    speed = speed or 250
     useTpForClose = useTpForClose or true
     
     hrp.Anchored = false
@@ -462,14 +462,16 @@ if _G.farm and game.PlaceId == 7449423635 then
             if hrp.CFrame.Position ~= castleIsland and not reachedCastle then
                 repeat task.wait()
                     tweenTo(castleIsland)
-                until hrp.CFrame.Position == castleIsland
+                until (hrp.Position - castleIsland).Magnitude <= 5
+                print("reachedCastle")
                 reachedCastle = true
             else
-                if hrp.CFrame.Position == castleIsland and reachedCastle then
+                if reachedCastle then
                     repeat
                         task.wait(0.5)
                     until ripindraSpawn()
                 elseif ripindraSpawn() then
+                    print("Rip_indra spawned")
                     repeat task.wait()
                         _G.fastattack = true
                         attackRipIndra()
