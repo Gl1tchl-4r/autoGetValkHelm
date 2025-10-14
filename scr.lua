@@ -71,7 +71,7 @@ local function teleportTo(targetCFrame)
 end
 
 function tweenTo(POs, speed, useTpForClose)
-    speed = speed or 250
+    speed = speed or 200
     useTpForClose = useTpForClose or true
     
     hrp.Anchored = false
