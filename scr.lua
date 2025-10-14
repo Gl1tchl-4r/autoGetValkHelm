@@ -184,7 +184,7 @@ local function fastAttack()
                                 local mt = getrawmetatable(cached._Object)
                                 setreadonly(mt, false)
                                 local oldIndex = mt.__index
-                                mt.__index = function(t, k) return k == "Length" and 0.13 or oldIndex(t, k) end
+                                mt.__index = function(t, k) return k == "Length" and 0.13 end
                                 setreadonly(mt, true)
                             end)
                         end
