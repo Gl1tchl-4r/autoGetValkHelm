@@ -368,20 +368,21 @@ end
 local function ripindraSpawn()
     if workspace.Enemies:FindFirstChild("rip_indra True Form") then
         return true
+    else
+        return false
     end
 end
 
 local function attackRipIndra()
     pcall(function ()
-        if ripindraSpawn() then
-            local indra = workspace.Enemies:FindFirstChild("rip_indra True Form")
-            repeat task.wait()
-                indra.Humanoid.JumpPower = 0
-                indra.Humanoid.WalkSpeed = 0
-                tweenTo(CFrame.new(indra.HumanoidRootPart.CFrame))
-                equipTool("Melee")
-            until indra.Humanoid.Health >= 0 and not indra.Parent
-        end
+        local indra = workspace.Enemies:FindFirstChild("rip_indra True Form")
+        repeat task.wait()
+            indra.Humanoid.JumpPower = 0
+            indra.Humanoid.WalkSpeed = 0
+            tweenTo(CFrame.new(indra.HumanoidRootPart.CFrame))
+            equipTool("Melee")
+        until indra.Humanoid.Health >= 0 and not indra
+        print("Rip_indra die")
     end)
 end
 
@@ -431,21 +432,27 @@ if _G.main and game.PlaceId == 7449423635 then
         end
         if hasGodChalice() or ripindraSpawn() then
             _G.autoElite = false
-            if hrp.CFrame.Position ~= castleIsland and not reachedCastle then
+            if not reachedCastle then
                 repeat task.wait()
                     tweenTo(castleIsland)
                 until (hrp.Position - castleIsland).Magnitude <= 5
                 print("reachedCastle")
                 reachedCastle = true
             else
-                if reachedCastle then
+                if reachedCastle and not workspace.Enemies:FindFirstChild("rip_indra True Form") then
                     print("here tapHaki")
                     tapHaki()
-                    repeat  task.wait(0.1)
+                    print("allgreen Haki")
+                    repeat task.wait(0.1)
                         tweenTo(CFrame.new(-5559.47607, 313.981659, -2664.13965, -0.423708141, -2.67357763e-08, 0.905798793, -7.12683104e-08, 1, -3.82114251e-09, -0.905798793, -6.61737971e-08, -0.423708141))
-                    until ripindraSpawn()
-                    _G.fastattack = true
-                    attackRipIndra()
+                    until ripindraSpawn() or workspace.Enemies:FindFirstChild("rip_indra True Form")
+                elseif ripindraSpawn() then 
+                    print("Rip_indra spawned")
+                    repeat task.wait()
+                        print("attacking rip indra")
+                        _G.fastattack = true
+                        attackRipIndra()
+                    until not workspace.Enemies:FindFirstChild("rip_indra True Form") or workspace.Enemies:FindFirstChild("rip_indra True Form").Humanoid.Health <= 0
                     _G.fastattack = false
                     return
                 end
@@ -459,24 +466,26 @@ if _G.farm and game.PlaceId == 7449423635 then
     fastAttack()
     while task.wait() do
         pcall(function()
-            if hrp.CFrame.Position ~= castleIsland and not reachedCastle then
+            if not reachedCastle then
                 repeat task.wait()
                     tweenTo(castleIsland)
                 until (hrp.Position - castleIsland).Magnitude <= 5
                 print("reachedCastle")
                 reachedCastle = true
             else
-                if reachedCastle then
+                if reachedCastle and not workspace.Enemies:FindFirstChild("rip_indra True Form") then
                     repeat
                         task.wait(0.5)
-                    until ripindraSpawn()
+                        print('wait for ripindraSpawn')
+                    until ripindraSpawn() or workspace.Enemies:FindFirstChild("rip_indra True Form")
                 elseif ripindraSpawn() then
                     print("Rip_indra spawned")
                     repeat task.wait()
+                        print("attacking rip indra")
                         _G.fastattack = true
                         attackRipIndra()
-                        _G.fastattack = false
-                    until not workspace.Enemies:FindFirstChild("rip_indra True Form") and workspace.Enemies:FindFirstChild("rip_indra True Form").Humanoid.Health <= 0
+                    until not workspace.Enemies:FindFirstChild("rip_indra True Form") or workspace.Enemies:FindFirstChild("rip_indra True Form").Humanoid.Health <= 0
+                    _G.fastattack = false
                 end
             end
         end)
