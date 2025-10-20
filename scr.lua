@@ -381,7 +381,7 @@ local function attackRipIndra()
             indra.Humanoid.WalkSpeed = 0
             tweenTo(CFrame.new(indra.HumanoidRootPart.CFrame))
             equipTool("Melee")
-        until indra.Humanoid.Health >= 0 and not indra
+        until indra.Humanoid.Health <= 0
         print("Rip_indra die")
     end)
 end
