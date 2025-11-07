@@ -4,6 +4,9 @@ task.spawn(function ()
         "Marines"
     }
     game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("CommF_"):InvokeServer(unpack(args))
+        
+    repeat wait() until game:IsLoaded() and game.Players.LocalPlayer.Character
+        
     if game.PlaceId ~= 7449423635 then
         game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("TravelZou")
     else
