@@ -333,8 +333,6 @@ local function attackRipIndra()
     end)
 end
 
-workspace.Enemies["rip_indra True Form"]
-
 local reachedCastle = false
 
 if _G.main and game.PlaceId == 7449423635 then
