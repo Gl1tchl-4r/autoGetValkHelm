@@ -1,3 +1,5 @@
+repeat wait() until game:IsLoaded() and game.Players.LocalPlayer and game:GetService("Players").LocalPlayer.PlayerGui:FindFirstChild("Main (minimal)")
+
 task.spawn(function ()
     local args = {
         "SetTeam",
@@ -13,8 +15,6 @@ task.spawn(function ()
         return
     end
 end)
-
-repeat wait() until game:IsLoaded() and game.Players.LocalPlayer.Character
 
 local player = game.Players.LocalPlayer
 local character = player.Character or player.CharacterAdded:Wait()
